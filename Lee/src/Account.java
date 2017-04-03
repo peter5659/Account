@@ -1,24 +1,28 @@
-// acc1,acc2 따로 생각하지말고!
+
+
 public class Account {
 	private double balance;
-	public double getBalance(double balance){
+	public double getBalance(){
 		return balance;
 	}
-	public void debit(double m){
-		balance-=m;
-		if(m<0){
-			System.out.println("인출하려고 하는 돈이 이상합니다.");
-			balance+=m;
+	public void debit(double a){
+		balance-=a;
+		if(balance<a){
+			System.out.println("잔고가 없습니다!");
+		}
+		if(a<0){
+			System.out.println("그럼 금액은 안돼요!");
+			balance+=a;
 		}
 	}
-	public void credit(double m){
-		balance+=m;
-		if(m<0){
-			System.out.println("입금하려는 돈이 이상합니다.");
-			balance-=m;
+	protected void setBalance(double a){
+		balance=a;
+	}
+	public void credit(double a){
+		balance+=a;
+		if(a<0){
+			System.out.println("그런 금액은 안돼요!");
+			balance-=a;
 		}
 	}
-}	
-
-	 
-
+}
