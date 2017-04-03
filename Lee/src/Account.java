@@ -1,7 +1,6 @@
 
-
-public class Account {
-	private double balance;
+public abstract class Account {
+	protected double balance;
 	public double getBalance(){
 		return balance;
 	}
@@ -25,4 +24,6 @@ public class Account {
 			balance-=a;
 		}
 	}
+	public abstract double getWithdrawableAccount();
+	public abstract double passTime(int m);
 }
