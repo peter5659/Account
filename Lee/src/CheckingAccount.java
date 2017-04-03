@@ -1,9 +1,9 @@
 
-public class checkingAccount extends Account{
+public class CheckingAccount extends Account{
 	private double creditLimit; //
 	private double interest=1.01; //예금이자
 	private double loanInterest=1.07; //대출이자
-	checkingAccount(double a,double creditLimit,double interest, double loanInterest){
+	CheckingAccount(double a,double creditLimit,double interest, double loanInterest){
 		//super(balance);
 		setBalance(a);
 		this.interest=interest;
