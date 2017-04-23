@@ -1,24 +1,30 @@
-
 public class CheckingAccount extends Account{
-	int month;
-	double interest;
-	double credit_limit;
-	double loanInterest;
-	public double getWithdrawableAccount(){
-		if(getBalance()<-1*credit_limit){
-			System.out.println("더이상 출금할 수 없다.");
-		}
-		return -1*(getBalance()-credit_limit);
-	}
-	public double passTime(int m){
-		month=m;
-		setBalance(getBalance()*Math.pow(1+interest, month));
-		return getBalance();
-	}
-	CheckingAccount(double a, double credit_limit, double interest,double loanInterest){
-		setBalance(a);
-		this.credit_limit=credit_limit;
+	private double credit_limit;
+	private double interest=1.01;
+	private double loan_interest=1.07;
+	CheckingAccount(double b,double cl,double interest, double li){
+		super(b);
 		this.interest=interest;
-		this.loanInterest=loanInterest;
+		credit_limit=cl;
+		loan_interest=li;
+	}
+	
+	public void debit(double a){
+		if(getBalance()-a<0){
+			System.out.println("잔액이 없습니다.");
+		}
+		if(getBalance()-a<credit_limit){
+			System.out.println("출금 가능한 금액을 넘었습니다.");
+			setBalance(getBalance()+a);
+		}
+		setBalance(getBalance()-a);
+	}
+	public void nextMonth(){
+		if(getBalance()>0){
+			setBalance(getBalance()*interest);
+		}
+		else{
+			setBalance(getBalance()*loan_interest);
+		}
 	}
 }
