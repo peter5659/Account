@@ -1,5 +1,5 @@
 
-public class SavingAccount extends Account{
+public class SavingAccount extends Account {
 	public int month=0;
 	public double interest;
 	
@@ -29,5 +29,13 @@ public class SavingAccount extends Account{
 		else{
 			return getBalance();
 		}
+	}
+	public double EstimateValue(int m){
+		month+=m;
+		setBalance(getBalance()*Math.pow(1+interest,month));
+		return getBalance();
+	}
+	public String toString(){
+		return "SavingAccount_Balance:"+getBalance();
 	}
 }

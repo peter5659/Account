@@ -1,4 +1,4 @@
-public class CheckingAccount extends Account{
+public class CheckingAccount extends Account {
 	private double credit_limit;
 	private double interest=1.01;
 	private double loan_interest=1.07;
@@ -42,4 +42,13 @@ public class CheckingAccount extends Account{
 			return true;
 		}
 	}
+	public double EstimateValue(int m){
+		month+=m;
+		setBalance(getBalance()*(1+interest*month));
+		return getBalance();
+	}
+	public String toString(){
+		return "CheckingAccount_Balance:"+getBalance();
+	}
+	
 }
