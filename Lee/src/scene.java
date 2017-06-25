@@ -1,68 +1,72 @@
 import java.util.Scanner;
+
 public class scene {
+	public int date=1;
+	void daypass(int day){
+		date+=day;
+	}	
+	static int rose[][]=new int[5][2];
+	int cosmos[]=new int[5];
+	int sunflower[]=new int [5];
 	public static void main(String[] args) {
-		int choose;
 		Scanner scanner=new Scanner(System.in);
-		int date=1;
-		System.out.println("1.꽃입력 2.입력완료 ");
-		choose=scanner.nextInt();
-		if(choose==1){
-			int stage=0;
-			System.out.println("1.장미 2.코스모스 3.해바라기");
-			int chose;
-			chose=scanner.nextInt();
-			if(chose==1){
-				rose r=new rose("장미","정열의 사랑",5);
+		int p=0;
+		while(true){
+			System.out.println("1. 꽃입력 2.입력완료\n");
+			int choose=scanner.nextInt();
+			if(choose==1){
 				while(true){
-					System.out.println("오늘은 "+date+"일입니다.");
-					if((date-1)%r.getwatercycle()==0){
-						System.out.println("오늘은 장미에 물을 주는 날입니다.\n");
-						stage++;
-						if(stage>30){
-							System.out.println("열매가 맺힐 때입니다.");
+					System.out.println("1.장미 2.코스모스 3.해바라기\n");
+					for(int i=0;i<5;i++){
+						System.out.println("rose:"+rose[i][0]);
+					}
+					int whichflower=scanner.nextInt();
+					if(whichflower==1){
+						if(p>=5){
+							System.out.println("저장 공간이 부족합니다.\n");
+							break;
 						}
-						else if(stage>20){
-							System.out.println("꽃이 필 때입니다..");
+						else{
+							rose[p][0]=p+1;
+							rose[p][1]=4;
+							System.out.println("장미개수:"+(p+1));
+							p=p+1;
+							break;
+						}
+					}
+					else if(whichflower==2){
+						
+					}
+					else if(whichflower==3){
+						
+					}
+				}
+			}
+			else if(choose==2){
+				int date=1;
+				for(int i=0;i<365;i++){
+					System.out.println("오늘은 "+date+"일 입니다.\n");
+					for(i=0;i<p-1;i++){
+						if(rose[i][1]==4){
+							System.out.println("오늘은"+rose[i][0]+"번째 rose에 물을 주는 날입니다.");
+						}
+						//if(cosmos[i][1]==5){
 							
+						//}
+						else{
+							continue;
 						}
-						else if(stage>10){
-							System.out.println("싹이 틀 때입니다.");
-						}
+							
 					}
-					date+=1;
-					if(date==365){
-						break;
-					}
+					date++;
+					
+					
 				}
 			}
-			else if(chose==2){
-				cosmos c=new cosmos("코스모스","순정",7);
-				while(true){
-					System.out.println("오늘은 "+date+"일입니다.");
-					if((date-1)%c.getwatercycle()==0){
-						System.out.println("오늘은 코스모스에 물을 주는 날입니다.\n");
-					}
-					date+=1;
-					if(date==365){
-						break;
-					}
-				}
-			}
-			else if(chose==3){
-				sunflower s=new sunflower("해바라기","기다림",4);
-				while(true){
-					System.out.println("오늘은 "+date+"일입니다.");
-					if((date-1)%s.getwatercycle()==0){
-						System.out.println("오늘은 해바라기에 물을 주는 날입니다.\n");
-					}
-					date+=1;
-					if(date==32){
-						break;
-					}
-				}
+			else{
+				System.out.println("잘못 누르셨습니다.");
+				break;
 			}
 		}
 	}
 }
-	
-
